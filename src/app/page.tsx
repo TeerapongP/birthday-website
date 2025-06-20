@@ -176,11 +176,6 @@ export default function BirthdayWebsite(): JSX.Element {
 
         {/* Footer */}
         <div className={`mt-8 sm:mt-12 transform transition-all duration-1000 delay-1000 ${showMessage ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
-            <p className="text-white/90 text-xs sm:text-sm animate-pulse">
-              คลิกที่เค้กเพื่อดู confetti! 🎊
-            </p>
-          </div>
           <div className="flex justify-center space-x-1 text-sm sm:text-base animate-bounce">
             <span>🌈</span>
             <span>✨</span>
