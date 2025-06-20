@@ -15,8 +15,8 @@ export default function BirthdayWebsite(): JSX.Element {
   const [currentEmoji, setCurrentEmoji] = useState<number>(0);
   const [isClient, setIsClient] = useState<boolean>(false);
 
-  const emojis: string[] = ['🎂', '🎉', '🎈', '🎁', '🌟', '💖'];
-  const colors: string[] = ['#ef4444', '#f87171', '#fb7185', '#f472b6', '#ec4899', '#e11d48'];
+  const emojis: string[] = ['🎂', '🎉', '🎈', '🎁', '🌟', '💖', '🦄', '🌈', '🍰', '🎊'];
+  const colors: string[] = ['#ef4444', '#f87171', '#fb7185', '#f472b6', '#ec4899', '#e11d48', '#fbbf24', '#60a5fa'];
 
   useEffect(() => {
     setIsClient(true);
@@ -91,68 +91,103 @@ export default function BirthdayWebsite(): JSX.Element {
       )}
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-8 text-center">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8 text-center">
+
+        {/* เพิ่มลูกโป่งลอยน่ารักๆ */}
+        <div className="absolute top-10 left-4 sm:left-10 animate-bounce text-2xl sm:text-3xl" style={{ animationDelay: '0.5s' }}>🎈</div>
+        <div className="absolute top-20 right-4 sm:right-10 animate-bounce text-2xl sm:text-3xl" style={{ animationDelay: '1.5s' }}>🎈</div>
+        <div className="absolute bottom-20 left-8 sm:left-16 animate-pulse text-xl sm:text-2xl">💝</div>
+        <div className="absolute bottom-32 right-8 sm:right-16 animate-pulse text-xl sm:text-2xl">🌸</div>
+
         {/* Header Animation */}
-        <div className="mb-8 transform transition-all duration-1000 hover:scale-110">
-          <div className="text-8xl mb-4 animate-bounce">
+        <div className="mb-6 sm:mb-8 transform transition-all duration-1000 hover:scale-110">
+          <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-4 animate-bounce">
             {emojis[currentEmoji]}
+          </div>
+          {/* เพิ่มดาวน่ารักรอบๆ */}
+          <div className="flex justify-center space-x-2 sm:space-x-3 text-lg sm:text-xl md:text-2xl">
+            <span className="animate-pulse">⭐</span>
+            <span className="animate-bounce">💫</span>
+            <span className="animate-pulse">⭐</span>
           </div>
         </div>
 
         {/* Main Title */}
         <div className={`transform transition-all duration-1000 ${showMessage ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h1 className="text-4xl md:text-4xl font-bold text-white mb-6 bg-gradient-to-r from-white via-pink-200 to-red-200 bg-clip-text text-transparent animate-pulse">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 bg-gradient-to-r from-white via-pink-200 to-red-200 bg-clip-text text-transparent animate-pulse">
             🎉 สุขสันต์ 🎉
           </h1>
 
-          <h2 className="text-4xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg">
             วันเกิด! 🎂
           </h2>
 
-          <h3 className="text-3xl md:text-4xl font-bold text-pink-300 mb-6 drop-shadow-lg animate-pulse">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-pink-300 mb-4 drop-shadow-lg animate-pulse">
             นะครับ 🌟
           </h3>
         </div>
 
         {/* Interactive Cake */}
         <div
-          className="mb-8 cursor-pointer transform transition-all duration-300 hover:scale-110 hover:rotate-3"
+          className="mb-6 cursor-pointer transform transition-all duration-300 hover:scale-110 hover:rotate-3 active:scale-95"
           onClick={handleCakeClick}
         >
           <div className="relative">
-            <Cake size={120} className="text-pink-200 drop-shadow-2xl animate-pulse" />
-            <div className="absolute -top-2 -right-2">
-              <Sparkles size={30} className="text-red-300 animate-spin" />
+            <Cake size={80} className="sm:w-24 sm:h-24 md:w-32 md:h-32 text-pink-200 drop-shadow-2xl animate-pulse" />
+            <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2">
+              <Sparkles size={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8 text-red-300 animate-spin" />
+            </div>
+            {/* เพิ่มเทียนน่ารักๆ */}
+            <div className="absolute top-2 left-1/2 transform -translate-x-1/2">
+              <div className="text-yellow-300 text-lg sm:text-xl animate-pulse">🕯️</div>
             </div>
           </div>
         </div>
 
         {/* Message */}
-        <div className={`max-w-2xl mx-auto transform transition-all duration-1000 delay-500 ${showMessage ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="bg-white/20 backdrop-blur-md rounded-3xl p-8 border border-white/30 shadow-2xl">
-            <p className="text-xl md:text-2xl text-white mb-6 leading-relaxed">
+        <div className={`max-w-xs sm:max-w-md md:max-w-2xl mx-auto px-4 transform transition-all duration-1000 delay-500 ${showMessage ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="bg-white/20 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-white/30 shadow-2xl">
+            <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-white mb-4 sm:mb-6 leading-relaxed">
               Happy Birthday นะครับเธอ! 🎉 มีความสุขมากๆนะ มีความสุขกับชีวิต มีแต่สิ่งดีๆเข้ามา
               ทำไรอะก็ขอให้สมหวัง เจอแต่ผู้คนดีๆเข้ามาในชีวิต เอ็นจอยกับทุกๆอย่างเลย
               สุขภาพแข็งแรง เฮงๆรวยๆนะ ✨🌟
             </p>
 
-            <div className="flex justify-center space-x-4 mb-6">
-              <Gift className="text-pink-200 animate-bounce" size={30} />
-              <Heart className="text-red-300 animate-pulse" size={30} />
-              <Star className="text-rose-300 animate-spin" size={30} />
+            <div className="flex justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+              <Gift className="text-pink-200 animate-bounce w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+              <Heart className="text-red-300 animate-pulse w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+              <Star className="text-rose-300 animate-spin w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
             </div>
 
-            <p className="text-lg text-pink-200 font-medium">
+            <p className="text-sm sm:text-base md:text-lg text-pink-200 font-medium mb-3">
               🎈 Happy Birthday นะครับเธอ! 🎈
             </p>
+
+            {/* เพิ่มตกแต่งน่ารักๆ */}
+            <div className="flex justify-center space-x-2 text-xl sm:text-2xl animate-pulse">
+              <span>🌸</span>
+              <span>💕</span>
+              <span>🦄</span>
+              <span>🌈</span>
+              <span>✨</span>
+            </div>
           </div>
         </div>
 
         {/* Footer */}
-        <div className={`mt-12 transform transition-all duration-1000 delay-1000 ${showMessage ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <p className="text-white/80 text-sm">
-            คลิกที่เค้กเพื่อดู confetti! 🎊
-          </p>
+        <div className={`mt-8 sm:mt-12 transform transition-all duration-1000 delay-1000 ${showMessage ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
+            <p className="text-white/90 text-xs sm:text-sm animate-pulse">
+              คลิกที่เค้กเพื่อดู confetti! 🎊
+            </p>
+          </div>
+          <div className="flex justify-center space-x-1 text-sm sm:text-base animate-bounce">
+            <span>🌈</span>
+            <span>✨</span>
+            <span>🎀</span>
+            <span>✨</span>
+            <span>🌈</span>
+          </div>
         </div>
       </div>
 
