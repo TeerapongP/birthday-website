@@ -101,11 +101,11 @@ export default function BirthdayWebsite(): JSX.Element {
 
         {/* Main Title */}
         <div className={`transform transition-all duration-1000 ${showMessage ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 bg-gradient-to-r from-white via-pink-200 to-red-200 bg-clip-text text-transparent animate-pulse">
+          <h1 className="text-4xl md:text-4xl font-bold text-white mb-6 bg-gradient-to-r from-white via-pink-200 to-red-200 bg-clip-text text-transparent animate-pulse">
             🎉 สุขสันต์ 🎉
           </h1>
 
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+          <h2 className="text-4xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
             วันเกิด! 🎂
           </h2>
 
