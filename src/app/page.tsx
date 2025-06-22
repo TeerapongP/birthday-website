@@ -14,7 +14,6 @@ export default function BirthdayWebsite(): JSX.Element {
   const [confetti, setConfetti] = useState<ConfettiPiece[]>([]);
   const [currentEmoji, setCurrentEmoji] = useState<number>(0);
   const [isClient, setIsClient] = useState<boolean>(false);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   const emojis: string[] = ['🎂', '🎉', '🎈', '🎁', '🌟', '💖', '🌻', '🍦', '🍰', '🎊'];
   const colors: string[] = ['#ef4444', '#f87171', '#fb7185', '#f472b6', '#ec4899', '#e11d48', '#fbbf24', '#60a5fa'];
@@ -37,16 +36,15 @@ export default function BirthdayWebsite(): JSX.Element {
       setCurrentEmoji(prev => (prev + 1) % emojis.length);
     }, 2000);
 
+    // เพิ่มเสียงเพลง
     const musicTimer = setTimeout(() => {
-      const audio = document.getElementById('birthday-music') as HTMLAudioElement;
+      const audio = document.getElementById('birthday-music') as HTMLAudioElement | null;
       if (audio) {
-          audio.play().then(() => {
-              setIsPlaying(true);
-          }).catch(error => {
-              console.log('Auto-play prevented:', error);
-          });
+        audio.play().catch(error => {
+          console.log('Auto-play prevented:', error);
+        });
       }
-  }, 1500);
+    }, 1500);
 
     return () => {
       clearTimeout(timer);
