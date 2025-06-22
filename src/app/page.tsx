@@ -14,8 +14,9 @@ export default function BirthdayWebsite(): JSX.Element {
   const [confetti, setConfetti] = useState<ConfettiPiece[]>([]);
   const [currentEmoji, setCurrentEmoji] = useState<number>(0);
   const [isClient, setIsClient] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
-  const emojis: string[] = ['🎂', '🎉', '🎈', '🎁', '🌟', '💖', '🦄', '🌈', '🍰', '🎊'];
+  const emojis: string[] = ['🎂', '🎉', '🎈', '🎁', '🌟', '💖', '🌻', '🍦', '🍰', '🎊'];
   const colors: string[] = ['#ef4444', '#f87171', '#fb7185', '#f472b6', '#ec4899', '#e11d48', '#fbbf24', '#60a5fa'];
 
   useEffect(() => {
@@ -36,9 +37,21 @@ export default function BirthdayWebsite(): JSX.Element {
       setCurrentEmoji(prev => (prev + 1) % emojis.length);
     }, 2000);
 
+    const musicTimer = setTimeout(() => {
+      const audio = document.getElementById('birthday-music') as HTMLAudioElement;
+      if (audio) {
+          audio.play().then(() => {
+              setIsPlaying(true);
+          }).catch(error => {
+              console.log('Auto-play prevented:', error);
+          });
+      }
+  }, 1500);
+
     return () => {
       clearTimeout(timer);
       clearInterval(emojiInterval);
+      clearTimeout(musicTimer);
     };
   }, []);
 
@@ -89,7 +102,15 @@ export default function BirthdayWebsite(): JSX.Element {
           ))}
         </div>
       )}
-
+      <audio 
+                        id="birthday-music" 
+                        loop 
+                        preload="auto"
+                        autoPlay
+                    >
+                      <source src="/music/Milky_Way_feat._PUN.mp3" />
+                        Your browser does not support the audio element.
+      </audio>
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8 text-center">
 
@@ -167,8 +188,8 @@ export default function BirthdayWebsite(): JSX.Element {
             <div className="flex justify-center space-x-2 text-xl sm:text-2xl animate-pulse">
               <span>🌸</span>
               <span>💕</span>
-              <span>🦄</span>
-              <span>🌈</span>
+              <span>🌻</span>
+              <span>🍦</span>
               <span>✨</span>
             </div>
           </div>
@@ -177,11 +198,11 @@ export default function BirthdayWebsite(): JSX.Element {
         {/* Footer */}
         <div className={`mt-8 sm:mt-12 transform transition-all duration-1000 delay-1000 ${showMessage ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <div className="flex justify-center space-x-1 text-sm sm:text-base animate-bounce">
-            <span>🌈</span>
+            <span>🍦</span>
             <span>✨</span>
             <span>🎀</span>
             <span>✨</span>
-            <span>🌈</span>
+            <span>🍦</span>
           </div>
         </div>
       </div>
