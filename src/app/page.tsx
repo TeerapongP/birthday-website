@@ -36,20 +36,10 @@ export default function BirthdayWebsite(): JSX.Element {
       setCurrentEmoji(prev => (prev + 1) % emojis.length);
     }, 2000);
 
-    // เพิ่มเสียงเพลง
-    const musicTimer = setTimeout(() => {
-      const audio = document.getElementById('birthday-music') as HTMLAudioElement | null;
-      if (audio) {
-        audio.play().catch(error => {
-          console.log('Auto-play prevented:', error);
-        });
-      }
-    }, 1500);
 
     return () => {
       clearTimeout(timer);
       clearInterval(emojiInterval);
-      clearTimeout(musicTimer);
     };
   }, []);
 
@@ -100,14 +90,14 @@ export default function BirthdayWebsite(): JSX.Element {
           ))}
         </div>
       )}
-      <audio 
-                        id="birthday-music" 
-                        loop 
-                        preload="auto"
-                        autoPlay
-                    >
-                      <source src="/music/Milky_Way_feat._PUN.mp3" />
-                        Your browser does not support the audio element.
+      <audio
+        id="birthday-music"
+        loop
+        preload="auto"
+        autoPlay
+      >
+        <source src="/music/Milky_Way_feat._PUN.mp3" />
+        Your browser does not support the audio element.
       </audio>
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8 text-center">
@@ -181,6 +171,17 @@ export default function BirthdayWebsite(): JSX.Element {
             <p className="text-sm sm:text-base md:text-lg text-pink-200 font-medium mb-3">
               🎈 Happy Birthday นะครับเธอ! 🎈
             </p>
+            <button
+              onClick={() => {
+                const audio = document.getElementById('birthday-music') as HTMLAudioElement | null;
+                if (audio) {
+                  audio.play();
+                }
+              }}
+              className="mt-4 px-6 py-3 bg-pink-300 hover:bg-pink-400 text-white font-semibold rounded-full shadow-lg transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 mb-4"
+            >
+              🎶 กดเพื่อเล่นเพลง 🎶
+            </button>
 
             {/* เพิ่มตกแต่งน่ารักๆ */}
             <div className="flex justify-center space-x-2 text-xl sm:text-2xl animate-pulse">
