@@ -180,7 +180,7 @@ export default function BirthdayWebsite(): JSX.Element {
               }}
               className="mt-4 px-6 py-3 bg-pink-300 hover:bg-pink-400 text-white font-semibold rounded-full shadow-lg transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 mb-4"
             >
-              🎶 กดเพื่อเล่นเพลง 🎶
+              🌟 กดสิคะ~ เพลงรักกำลังรออยู่ 💕🎶
             </button>
 
             {/* เพิ่มตกแต่งน่ารักๆ */}
